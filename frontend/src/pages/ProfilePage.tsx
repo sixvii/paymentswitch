@@ -1,10 +1,11 @@
-import { ChangeEvent, useMemo, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '@/store/useStore';
 import { Camera, Copy, LogOut } from 'lucide-react';
 import { toast } from 'sonner';
 import { uploadBackendProfileImage } from '@/lib/backendApi';
 import { computeUserTrustScore } from '@/lib/trustScore';
+import { getProfileImageUrl } from '@/lib/profileImage';
 import userIcon from '@/assets/icons/user.png';
 import trustIcon from '@/assets/icons/trust.png';
 import callIcon from '@/assets/icons/call.png';
@@ -14,6 +15,7 @@ const ProfilePage = () => {
   const navigate = useNavigate();
   const { currentUser, trustScore, transactions, savingsGroups, escrows, billPayments, logout, setProfileImage } = useStore();
   const [isUploadingImage, setIsUploadingImage] = useState(false);
+  const [avatarLoadFailed, setAvatarLoadFailed] = useState(false);
 
   const derivedTrustScore = useMemo(() => computeUserTrustScore({
     currentUser,
@@ -23,6 +25,11 @@ const ProfilePage = () => {
     billPayments,
     fallback: trustScore,
   }), [billPayments, currentUser, escrows, savingsGroups, transactions, trustScore]);
+  const avatarUrl = useMemo(() => getProfileImageUrl(currentUser?.profileImage, 160), [currentUser?.profileImage]);
+
+  useEffect(() => {
+    setAvatarLoadFailed(false);
+  }, [avatarUrl]);
 
   const handleLogout = () => {
     logout();
@@ -68,8 +75,14 @@ const ProfilePage = () => {
       {/* Avatar */}
       <div className="flex flex-col items-center mb-8">
         <div className="w-20 h-20 rounded-full bg-[#093A5B] flex items-center justify-center mb-3 overflow-hidden">
-          {currentUser?.profileImage ? (
-            <img src={currentUser.profileImage} alt="Profile" className="w-full h-full object-cover" />
+          {avatarUrl && !avatarLoadFailed ? (
+            <img
+              src={avatarUrl}
+              alt="Profile"
+              className="w-full h-full object-cover object-center"
+              loading="lazy"
+              onError={() => setAvatarLoadFailed(true)}
+            />
           ) : (
             <span className="text-accent-foreground font-bold text-2xl">
               {currentUser?.firstName?.[0]}{currentUser?.lastName?.[0]}

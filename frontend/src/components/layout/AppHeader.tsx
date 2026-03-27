@@ -1,17 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Bell, User } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '@/store/useStore';
+import { getProfileImageUrl } from '@/lib/profileImage';
 
 const AppHeader = () => {
   const navigate = useNavigate();
   const { currentUser, notifications, fetchNotifications } = useStore();
   const unreadCount = notifications.filter(n => !n.read).length;
+  const [avatarLoadFailed, setAvatarLoadFailed] = useState(false);
+  const avatarUrl = useMemo(() => getProfileImageUrl(currentUser?.profileImage, 80), [currentUser?.profileImage]);
 
   useEffect(() => {
     if (!currentUser?.id) return;
     void fetchNotifications();
   }, [currentUser?.id, fetchNotifications]);
+
+  useEffect(() => {
+    setAvatarLoadFailed(false);
+  }, [avatarUrl]);
 
   return (
     <header className="sticky top-0 z-50 bg-[#F2F5F7]">
@@ -38,8 +45,14 @@ const AppHeader = () => {
             onClick={() => navigate('/profile')}
             className="w-10 h-10 rounded-full bg-[#EEF1F4] border border-gray-400 flex items-center justify-center overflow-hidden"
           >
-            {currentUser?.profileImage ? (
-              <img src={currentUser.profileImage} alt="Profile" className="w-full h-full object-cover" />
+            {avatarUrl && !avatarLoadFailed ? (
+              <img
+                src={avatarUrl}
+                alt="Profile"
+                className="w-full h-full object-cover object-center"
+                loading="lazy"
+                onError={() => setAvatarLoadFailed(true)}
+              />
             ) : currentUser ? (
               <span className="text-[#093A5B] font-semibold text-sm">
                 {currentUser.firstName[0]}{currentUser.lastName[0]}
