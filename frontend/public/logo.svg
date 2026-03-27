@@ -1,0 +1,49 @@
+<svg version="1.1" id="Layer_1" xmlns:x="ns_extend;" xmlns:i="ns_ai;" xmlns:graph="ns_graphs;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 123.2 186" style="enable-background:new 0 0 123.2 186;" xml:space="preserve">
+ <style type="text/css">
+  .st0{filter:url(#Adobe_OpacityMaskFilter);}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.st2{mask:url(#interswitch_x40_1x-z_1_);fill-rule:evenodd;clip-rule:evenodd;fill:#ED342B;}
+	.st3{filter:url(#Adobe_OpacityMaskFilter_1_);}
+	.st4{mask:url(#interswitch_x40_1x-B_1_);fill-rule:evenodd;clip-rule:evenodd;fill:#ED342B;}
+ </style>
+ <metadata>
+  <sfw xmlns="ns_sfw;">
+   <slices>
+   </slices>
+   <sliceSourceBounds bottomLeftOrigin="true" height="234.9" width="171.3" x="533" y="-24.4">
+   </sliceSourceBounds>
+  </sfw>
+ </metadata>
+ <defs>
+  <filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="-23.4" y="29.6" width="151.5" height="180.9">
+   <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0">
+   </feColorMatrix>
+  </filter>
+ </defs>
+ <mask maskUnits="userSpaceOnUse" x="-23.4" y="29.6" width="151.5" height="180.9" id="interswitch_x40_1x-z_1_">
+  <g class="st0">
+   <path id="interswitch_x40_1x-y_1_" class="st1" d="M2.3,66.3c0-3.5,44-11,73.5-11c12.8,0,22.9,1.4,25.4,5.2
+			C114.5,78,20.9,188,13.2,184.7C6.9,183,63,113,53.7,84.6C49,69.6,2.3,71.3,2.3,66.3z">
+   </path>
+  </g>
+ </mask>
+ <polygon class="st2" points="-23.4,210.4 128.1,210.4 128.1,29.6 -23.4,29.6 ">
+ </polygon>
+ <g transform="translate(140 636)">
+  <defs>
+   <filter id="Adobe_OpacityMaskFilter_1_" filterUnits="userSpaceOnUse" x="-84" y="-660.4" width="91.8" height="94.7">
+    <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0">
+    </feColorMatrix>
+   </filter>
+  </defs>
+  <mask maskUnits="userSpaceOnUse" x="-84" y="-660.4" width="91.8" height="94.7" id="interswitch_x40_1x-B_1_">
+   <g class="st3">
+    <path id="interswitch_x40_1x-A_1_" class="st1" d="M-58.3-613.1c0-12,9.1-21.7,20.3-21.7c11.2,0,20.3,9.7,20.3,21.7
+				c0,12-9.1,21.7-20.3,21.7C-49.2-591.4-58.3-601.1-58.3-613.1z">
+    </path>
+   </g>
+  </mask>
+  <polygon class="st4" points="-84,-565.7 7.9,-565.7 7.9,-660.4 -84,-660.4 	">
+  </polygon>
+ </g>
+</svg>
